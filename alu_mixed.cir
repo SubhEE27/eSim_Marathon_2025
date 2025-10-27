@@ -1,0 +1,20 @@
+* ALU Mixed Signal Simulation
+* ALU Mixed Signal Simulation
+.include alu_stimuli.sp
+
+* Load circuit
+R1 out 0 1k
+C1 out 0 1pF
+
+* Analysis
+.tran 0.1n 50n
+
+* Save results for plotting
+.control
+run
+set filetype=ascii
+wrdata alu_results.txt v(a0) v(a1) v(b0) v(b1) v(sel0) v(sel1) v(sel2) v(sel3) v(out)
+print v(a0) v(a1) v(b0) v(sel0) v(sel1) v(out) > alu_analysis.txt
+.endc
+
+.end
